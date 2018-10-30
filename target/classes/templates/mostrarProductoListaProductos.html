@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{head_show_product}">MVC Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1 th:text="#{title_showproduct}">Result</h1>
+<p th:text="#{form_product_code} + ': ' + ${Producto.codigo}" />
+<p th:text="#{form_product_name} + ': ' + ${Producto.nombre}" />
+<p th:text="#{form_product_description} + ': '+ ${Producto.descripcion}" />
+<p th:text="#{form_product_price} + ': ' + ${Producto.precio}" />
+<a href="/list" th:utext="#{return}">Volver</a>
+</body>
+</html>
