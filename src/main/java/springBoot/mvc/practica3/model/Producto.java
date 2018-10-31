@@ -1,4 +1,4 @@
-package springBoot.mvc.practica2.model;
+package springBoot.mvc.practica3.model;
 
 import org.springframework.data.annotation.Id;
 
