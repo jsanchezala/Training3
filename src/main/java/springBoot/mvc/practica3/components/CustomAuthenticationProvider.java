@@ -8,8 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import wecc.examples.springboot.security.advanced.model.User;
-import wecc.examples.springboot.security.advanced.repositories.UserRepository;
+import springBoot.mvc.practica3.model.User;
+import springBoot.mvc.practica3.repositories.UserRepository;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {

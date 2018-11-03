@@ -10,6 +10,11 @@
 <p th:text="#{form_product_name} + ': ' + ${Producto.nombre}" />
 <p th:text="#{form_product_description} + ': '+ ${Producto.descripcion}" />
 <p th:text="#{form_product_price} + ': ' + ${Producto.precio}" />
-<a href="/list" th:utext="#{return}">Volver</a>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <a href="/list" th:utext="#{return}">Volver</a>
+</div>
+<div sec:authorize="hasRole('ROLE_USER')">
+    <a href="/listUser" th:utext="#{return}">Volver</a>
+</div>
 </body>
 </html>

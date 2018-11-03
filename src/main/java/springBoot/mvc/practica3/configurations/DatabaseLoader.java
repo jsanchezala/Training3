@@ -1,4 +1,4 @@
-package springBoot.mvc.practica3.components;
+package springBoot.mvc.practica3.configurations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,7 +19,6 @@ public class DatabaseLoader {
 
     @PostConstruct
     private void initDatabase(){
-
         List<GrantedAuthority> adminRoles = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"),
                 new SimpleGrantedAuthority("ROLE_ADMIN"));
         List<GrantedAuthority> userRoles = Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));

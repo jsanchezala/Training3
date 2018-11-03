@@ -1,16 +1,17 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <html>
     <head>
         <title>Login form</title>
     </head>
     <body>
-        <p data-th-if="${param.error}">Invalid credentials</p>
-        <p data-th-if="${param.logout}">Logged out</p>
+        <p data-th-if="${param.error}"> <label th:text="#{form_login_invalid}">Invalid credentials</label></p>
+        <p data-th-if="${param.logout}"> <label th:text="#{form_login_logout}">Logged out</label></p>
 
         <form data-th-action="@{/login}" method="post">
-            <label>User Name:</label><input type="text" name="username"><br>
-            <label>Password:</label><input type="password" name="password"><br>
-            <input type="submit" value="Sign In"><br>
+            <label th:text="#{form_login_user}+': '">User Name:</label><input type="text" name="username"><br>
+            <label th:text="#{form_login_password}+': '">Password:</label><input type="password" name="password"><br>
+            <input type="submit" th:value="#{submit}"><br>
         </form>
     </body>
 </html>

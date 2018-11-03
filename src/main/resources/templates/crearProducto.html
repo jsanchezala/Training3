@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title th:text="#{new_product}">Practica2</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title th:text="#{new_product}">Practica3</title>
 </head>
 <body>
+<div th:if="${editar}">
+    <p>Holaa</p>
+</div>
 <h1 th:text="#{form_title}">NUEVO PRODUCTO</h1>
 <form action="#" th:action="@{/newProduct}" th:object="${producto}" method="post">
-	<p> <label th:text="#{form_product_code}+': '"/><input th:type="text" th:field="*{codigo}" required/></p>
-	<p><label th:text="#{form_product_name}+': '"/> <input th:type="text" th:field="*{nombre}" required/></p>
-	<p> <label th:text="#{form_product_description}+': '"/><input th:type="text" th:field="*{descripcion}" required/></p>
-	<p> <label th:text="#{form_product_price}+': '"/><input th:type="number" th:field="*{precio}" required/></p>
-	<br>
-	<input type="submit" th:value="#{button_submit}" /> <input type="reset" th:value="#{button_reset}" />
+    <p><label th:text="#{form_product_code}+': '"/><input th:type="text" th:field="*{codigo}" required/></p>
+    <p><label th:text="#{form_product_name}+': '"/> <input th:type="text" th:field="*{nombre}" required/></p>
+    <p><label th:text="#{form_product_description}+': '"/><input th:type="text" th:field="*{descripcion}" required/></p>
+    <p><label th:text="#{form_product_price}+': '"/><input th:type="number" th:field="*{precio}" required/></p>
+    <br>
+    <input type="submit" th:value="#{button_submit}"/> <input type="reset" th:value="#{button_reset}"/>
 </form>
+
 </body>
 </html>

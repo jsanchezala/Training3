@@ -1,21 +1,17 @@
 package springBoot.mvc.practica3.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
 import java.util.List;
 
-@Entity
+
 public class User {
 
     @Id
     private String user;
     private String password;
-    @ElementCollection(fetch = FetchType.EAGER)
     private List<GrantedAuthority> roles;
 
     public User() {
