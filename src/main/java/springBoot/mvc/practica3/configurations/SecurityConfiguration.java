@@ -18,42 +18,48 @@ import springBoot.mvc.practica3.components.CustomAuthenticationProvider;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	public CustomAuthenticationProvider authenticationProvider;
+    @Autowired
+    public CustomAuthenticationProvider authenticationProvider;
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests()
-				.antMatchers( "/login")
-				.permitAll()
-				.anyRequest()
-				.authenticated();
+        http
 
+                .authorizeRequests()
+                .antMatchers("/login")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
 
-		http.formLogin()
-				.loginPage("/login")
-				.successHandler(myAuthenticationSuccessHandler())
-				.failureUrl("/login?error")
-				.permitAll();
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .successHandler(myAuthenticationSuccessHandler())
+                .failureUrl("/login?error")
+                .permitAll()
 
-		http.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/login?logout")
-				.permitAll();
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
 
-	}
+                .and()
+                .exceptionHandling().accessDeniedPage("/403");
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		auth.inMemoryAuthentication().withUser("user").password(encoder.encode("user1")).roles("USER");
-		auth.inMemoryAuthentication().withUser("root").password(encoder.encode("root1")).roles("USER", "ADMIN");
-	}
+    }
 
-	@Bean
-	public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
-		return new UrlAuthenticationSuccessHandler();
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        auth.inMemoryAuthentication().withUser("user").password(encoder.encode("user1")).roles("USER");
+        auth.inMemoryAuthentication().withUser("root").password(encoder.encode("root1")).roles("USER", "ADMIN");
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
+        return new UrlAuthenticationSuccessHandler();
+    }
 
 }

@@ -82,6 +82,11 @@ public class ControladorPrincipal {
         return "listaProductos";
     }
 
+    @RequestMapping("/403")
+    public String accessDenied() {
+        return "errors/403";
+    }
+
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping(value = "/listUser")
     public String getListUser(Model model) {
