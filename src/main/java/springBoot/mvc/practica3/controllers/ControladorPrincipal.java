@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import springBoot.mvc.practica3.model.Producto;
+import springBoot.mvc.practica3.model.User;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class ControladorPrincipal {
     public String login() {
         return "login";
     }
+
 
     @Secured({"ROLE_ADMIN"})
     @GetMapping("/index")
@@ -87,15 +89,6 @@ public class ControladorPrincipal {
         return "error/403";
     }
 
-    @RequestMapping("/404")
-    public String errorObject() {
-        return "errors/404";
-    }
-
-    @RequestMapping("/500")
-    public String errorServer() {
-        return "errors/500";
-    }
 
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping(value = "/listUser")

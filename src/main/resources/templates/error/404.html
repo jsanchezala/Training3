@@ -8,11 +8,6 @@
 <h2 th:text="#{error_404_h2}">Sorry, you do not have permission to view this page.</h2>
 
 
-<!--
-<a th:text="#{return}" sec:authorize="hasRole('ROLE_ADMIN')" th:href="/list"> here</a>
-<a th:text="#{return}" sec:authorize="hasRole('ROLE_ADMIN')" th:href="/listUser"/> here</a>
--->
-
 <p><label th:text="#{error_click}">Click </label>
     <label th:text="#{error_click_rest}">to go back to the Homepage.</label>
 </p>
@@ -20,7 +15,7 @@
 <div sec:authorize="hasRole('ROLE_ADMIN')">
     <a href="/list" th:utext="#{return}">Volver</a>
 </div>
-<div sec:authorize="hasRole('ROLE_USER')">
+<div sec:authorize="hasRole('ROLE_USER') and !hasRole('ROLE_ADMIN')">
     <a href="/listUser" th:utext="#{return}">Volver</a>
 </div>
 </body>
