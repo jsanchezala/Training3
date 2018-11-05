@@ -84,7 +84,17 @@ public class ControladorPrincipal {
 
     @RequestMapping("/403")
     public String accessDenied() {
-        return "errors/403";
+        return "error/403";
+    }
+
+    @RequestMapping("/404")
+    public String errorObject() {
+        return "errors/404";
+    }
+
+    @RequestMapping("/500")
+    public String errorServer() {
+        return "errors/500";
     }
 
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
